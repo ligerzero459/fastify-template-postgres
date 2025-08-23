@@ -1,0 +1,30 @@
+{
+  "name": "fastify-template-postgres",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ./",
+    "lint:fix": "npm run lint -- --fix",
+    "local": "env $(cat ./env/local.env) ",
+    "migrate": "node-pg-migrate",
+    "start": "docker-compose -f compose/base.yml -f compose/dev.yml up --build --remove-orphans",
+    "stop": "docker-compose -f compose/base.yml -f compose/dev.yml down --rmi=local --volumes",
+    "start:dev": "npm run local nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ligerzero (liger@ligerzerogaming.com)",
+  "license": "MIT",
+  "description": "Fastify HTTP server template with Postgresql integration",
+  "dependencies": {
+    "fastify": "^5.4.0",
+    "node-pg-migrate": "^8.0.4",
+    "pg": "^8.7.1",
+    "pino": "^9.7.0",
+    "pino-pretty": "^13.1.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "eslint": "^9.33.0"
+  }
+}
